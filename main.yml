@@ -1,0 +1,14 @@
+---
+- name: Main
+  hosts: remote_servers
+  tasks:
+    - name: Collecting Log Files
+      fetch:
+        src: /var/log/syslog
+        dest: /home/bartolome/Bartolome_HOA7.2/collectedLogs
+        flat: yes
+      register: syslog
+
+    - name: Viewing collectedLogs
+      debug:
+        var: syslog
